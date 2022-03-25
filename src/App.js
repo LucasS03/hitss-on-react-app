@@ -1,22 +1,29 @@
-import logo from './logo.svg';
+import React, { useState } from "react";
 import './App.css';
+import Modal from './modal';
+import ModalBody from './modalBody';
 
 function App() {
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  function changeStateModal(state) {
+    setModalIsOpen(state);
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {modalIsOpen ?
+          <Modal title="Login" onCloseModal={(value) => changeStateModal(value)}>
+            <ModalBody />
+          </Modal>
+          : 
+          <button className="btn-login" onClick={() => changeStateModal(true)}>
+            Fazer Login
+          </button>
+        }
+        
       </header>
     </div>
   );
