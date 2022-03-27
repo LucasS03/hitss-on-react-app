@@ -18,8 +18,7 @@ const ModalBody = (props) => {
         user.login({ email, password })
         .then(function (response) {
             console.log("sucesso!");
-            localStorage.setItem("user", JSON.stringify(response.data.user));
-            localStorage.setItem("userToken", response.data.token);
+            localStorage.setItem("user", JSON.stringify(response.data));
         })
         .catch(function (error) {
             console.error(error);
