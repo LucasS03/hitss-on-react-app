@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import user from "./services/user";
+import { useNavigate } from "react-router-dom";
 
 const ModalBody = (props) => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
     function handleEmailChange(e) {
         setEmail(e.target.value);
@@ -19,6 +21,8 @@ const ModalBody = (props) => {
         .then(function (response) {
             console.log("sucesso!");
             localStorage.setItem("user", JSON.stringify(response.data));
+            navigate(`/inicio/${response.data.user.id}`);
+            props.onCloseModal(false);
         })
         .catch(function (error) {
             console.error(error);

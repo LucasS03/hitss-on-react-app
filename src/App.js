@@ -1,40 +1,23 @@
-import React, { useState } from "react";
-import './App.css';
-import Modal from './modal';
-import ModalBody from './modalBody';
-import { MainContext } from './contexts/MainContext'
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Home from "./pages/Home";
+import Header from "./components/header";
+import NotFound from "./pages/NotFound";
+import { MainContext } from "./contexts/MainContext";
 
 function App() {
-
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const { userInfo, setUserInfo } = React.useContext(MainContext);
-
-  function changeStateModal(state) {
-    setModalIsOpen(state);
-  }
-
+  const { userInfo } = React.useContext(MainContext);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        {JSON.stringify(userInfo)} <br />
-        
-        {modalIsOpen ?
-          <Modal title="Login" onCloseModal={(value) => changeStateModal(value)}>
-            <ModalBody />
-          </Modal>
-          :
-          userInfo ?
-            <button className="btn-login" onClick={() => setUserInfo(null)}>
-              Logout
-            </button>
-            :
-            <button className="btn-login" onClick={() => changeStateModal(true)}>
-              Fazer Login
-            </button>
-        }
-        
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/inicio/:id" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

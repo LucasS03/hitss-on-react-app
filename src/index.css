@@ -12,63 +12,6 @@ code {
     monospace;
 }
 
-.modal {
-  width: 400px;
-  height: 600px;
-  background-color: #fff;
-  border: 1px solid #fff;
-  border-radius: 10px;
-  padding: 10px 30px;
-}
-.modal .btn-close-content {
-  display: flex;
-  justify-content: flex-end;
-}
-
-.modal .btn-close {
-  height: 50px;
-  width: 50px;
-  background-color: transparent;
-  border: 1px solid transparent;
-  font-size: 30px;
-  color: #282c34;
-  cursor: pointer;
-  border-radius: 25px;
-  transition: border 0.5s ease;
-}
-
-.modal .btn-close:HOVER {
-  border-color: #282c34;
-}
-
-.modal .title {
-  color: #282c34;
-}
-
-.modal .form-modal {
-  display: flex;
-  flex-direction: column;
-}
-
-.modal .form-modal .input {
-  padding: 20px 10px;
-  border: 1px solid #282c34;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  font-size: 18px;
-}
-
-.modal .form-modal .btn-submit {
-  padding: 10px;
-  margin-top: 20px;
-  background-color: #282c34;
-  font-size: 20px;
-  border: 1px solid #282c34;
-  border-radius: 10px;
-  color: #fff;
-  cursor: pointer;
-}
-
 .btn-login {
   width: 400px;
   padding: 10px;

@@ -15,7 +15,7 @@ const userInfoReducer = (prev, newValue) => {
 const MainContext = React.createContext({});
 
 const MainContextProvider = ({ children }) => {
-    const [userInfo, setUserInfo] = React.useReducer(userInfoReducer, JSON.parse(localStorage.getItem('user')));
+    const [userInfo, setUserInfo] = React.useReducer(userInfoReducer, JSON.parse(localStorage.getItem("user")));
 
     return (
         <MainContext.Provider value={{ userInfo, setUserInfo }}>
