@@ -40,7 +40,9 @@ const getCourses = async () => {
 
 const getCourseById = async (id) => {
   try {
-		return api.get(`/course/${id}`);
+		const resp = await api.get(`/course/${id}`);
+		
+		return resp.data;
 	} catch (error) {
 		console.error("get course error: ", error);
 		return error;

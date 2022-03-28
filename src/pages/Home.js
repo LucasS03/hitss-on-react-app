@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../style/home.css";
 import { MainContext } from "../contexts/MainContext";
 import coursesApi from "../services/courses";
+import CardCourseHome from "../components/cardCourseHome";
 
 function Home() {
     const { userInfo } = React.useContext(MainContext);
@@ -26,14 +27,10 @@ function Home() {
 
     return (
         <div className="container-home">
-            {/* Teste Home {params.id} <br /> */}
-            <h1>Cursos</h1>
+            <h1>Trilha Javascript</h1>
 
             {courses.length && courses.map((course) => {
-                return <div className="course" key={course.id}>
-                    <h2>{course.title}</h2>
-                    <h4>{course.description}</h4>
-                </div>
+                return <CardCourseHome course={course} />
             })}
         </div>
     );

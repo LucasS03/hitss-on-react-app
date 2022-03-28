@@ -2,12 +2,11 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Lessons from "./pages/LessonsofCourse";
 import Header from "./components/header";
 import NotFound from "./pages/NotFound";
-import { MainContext } from "./contexts/MainContext";
 
 function App() {
-  const { userInfo } = React.useContext(MainContext);
   
   return (
     <BrowserRouter>
@@ -15,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/inicio/:id" element={<Home />} />
+        <Route path="/curso/:courseId/lessons/" element={<Lessons />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

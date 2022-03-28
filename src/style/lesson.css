@@ -1,0 +1,70 @@
+.container-lesson {
+    padding: 10px 20px;
+    padding-top: 120px;
+}
+
+.container-lesson a {
+    text-decoration: none;
+    padding: 10px;
+}
+
+.container-lesson a span {
+    color: black;
+    font-weight: 600;
+}
+
+.container-lesson h1 {
+    padding: 20px 10px 0 10px;
+    margin: 0;
+}
+
+.container-lesson h4 {
+    padding: 0 10px 10px 10px;
+    color: #444;
+    margin: 0;
+}
+
+.lesson {
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .7);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    color: #444;
+}
+
+.lesson h4 {
+    padding: 0;
+}
+
+.content-lesson {
+    display: flex;
+    flex-direction: row;
+}
+.content-lesson .list-lessons {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 10;
+    padding: 10px;
+}
+.content-lesson .description-course {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2;
+    padding: 10px;
+    height: min-content;
+}
+
+.content-lesson .description-course .description-course-content {
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, .7);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    color: #444;
+}
+
+.content-lesson .description-course .description-course-content h2,
+.content-lesson .description-course .description-course-content p {
+    margin: 10px 0;
+}
