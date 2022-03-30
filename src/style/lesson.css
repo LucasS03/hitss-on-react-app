@@ -41,6 +41,24 @@
     display: flex;
     flex-direction: row;
 }
+
+.content-lesson .divider-section {
+    display: none;
+    width: 100%;
+    border-color: #909090;
+}
+
+@media (max-width: 992px) {
+    .content-lesson {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+
+    .content-lesson .divider-section {
+        display: block;
+    }
+}
+
 .content-lesson .list-lessons {
     display: flex;
     flex-direction: column;

@@ -54,6 +54,7 @@ const Lesson = () => {
                         <h2>Sobre o curso</h2>
                         <p>{course.description}</p>
                     </div>
+                    <hr className="divider-section"/>
                 </div>
             </div>
         </div>
