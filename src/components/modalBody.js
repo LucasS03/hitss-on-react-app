@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import user from "./services/user";
+import user from "../services/user";
 import { useNavigate } from "react-router-dom";
 
 const ModalBody = (props) => {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState(false);
     const navigate = useNavigate();
 
     function handleEmailChange(e) {
@@ -19,13 +20,14 @@ const ModalBody = (props) => {
     function handleLogin() {
         user.login({ email, password })
         .then(function (response) {
-            console.log("sucesso!");
+            setLoginError(false);
             localStorage.setItem("user", JSON.stringify(response.data));
             navigate(`/inicio/${response.data.user.id}`);
             props.onCloseModal(false);
         })
         .catch(function (error) {
             console.error(error);
+            setLoginError(true);
         });
     }
 
@@ -52,6 +54,13 @@ const ModalBody = (props) => {
                 onKeyUp={onKeyUp}/>
 
             <button className="btn-submit" type="button" onClick={handleLogin}>Login</button>
+
+            { loginError ? 
+                <div className="login-error">
+                    <p>Erro ao fazer login.</p>
+                </div> :
+                <></>
+            }
         </form>
     </div>
 }

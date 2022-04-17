@@ -1,0 +1,25 @@
+.sidebar {
+    width: 100%;
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+.sidebar ul li {
+    list-style-type: none;
+    font-size: 18px;
+    padding: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sidebar ul li:hover {
+    background-color: #4f4f4f;
+}
+
+.sidebar ul li.selected {
+    background-color: #6f6f6f;
+}
+

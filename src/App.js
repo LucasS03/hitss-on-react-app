@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Lessons from "./pages/LessonsofCourse";
 import Header from "./components/header";
 import NotFound from "./pages/NotFound";
+import Admin from "./pages/Admin";
 
 function App() {
   
@@ -14,7 +15,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/inicio/:id" element={<Home />} />
+
+        <Route path="/admin/:page" element={<Admin />} />
+
         <Route path="/curso/:courseId/lessons/" element={<Lessons />} />
+        
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

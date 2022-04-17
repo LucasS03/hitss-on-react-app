@@ -9,8 +9,21 @@ const login = async (user) => {
     }
 }
 
+
+const getUsers = async () => {
+    try {
+        const resp = await api.get('/users');
+
+        return resp.data;
+    } catch (error) {
+        console.error("get users error", error);
+        return error;
+    }
+}
+
 const methods = { 
-    login
+    login,
+    getUsers
 };
 
 export default methods;

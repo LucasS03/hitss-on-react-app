@@ -26,14 +26,70 @@
     border-radius: 5px;
 }
 
+.dropbtn {
+    background-color: #282c34;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #545455;
+}
+
 /* Modal login */
+.login-container-modal {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0,0,0,.6);
+    height: 100vh;
+    width: 100%;
+}
+.login-content-modal {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
 .container-modal {
     padding: 0;
     margin: 0;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0,0,0,.6);
     z-index: 1000;
     display: flex;
     flex-direction: column;
@@ -97,4 +153,14 @@
     border-radius: 10px;
     color: #fff;
     cursor: pointer;
+}
+
+.modal .login-error {
+    margin-top: 20px;
+    background-color: rgb(255, 221, 221);
+    color: rgb(138, 0, 0);
+    font-weight: bold;
+    border: 1px solid rgb(138, 0, 0);
+    border-radius: 5px;
+    padding: 0 20px;
 }

@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { MainContext } from "../contexts/MainContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../style/header.css";
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import Modal from "../modal";
-import ModalBody from "../modalBody";
+import Modal from "./modal";
+import ModalBody from "./modalBody";
 // import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
 // const element = <FontAwesomeIcon icon={faCoffee} />
@@ -27,24 +27,37 @@ function Header() {
 	}
 
 	function login() {
-		console.log("login");
 		setModalIsOpen(true);
 	}
 	
 	return (
 		<div className="header">
-			{modalIsOpen ? 
-				<Modal title="Login" onCloseModal={(value) => changeStateModal(value)}>
-					<ModalBody onCloseModal={(value) => changeStateModal(value)} />
-				</Modal>
+			{modalIsOpen ?
+				<div className='login-container-modal'>
+					<div className='login-content-modal'> 
+						<Modal title="Login" onCloseModal={(value) => changeStateModal(value)}>
+							<ModalBody onCloseModal={(value) => changeStateModal(value)} />
+						</Modal>
+					</div>
+				</div>
 				: <></>
 			}
 
 			<div className="header-content">
 				<h1>HitssOn</h1>
-				<button className="header-logout" onClick={() => userInfo ? logout() : login()}>
-					{ userInfo ? 'Sair' : 'Login' }
-				</button>
+
+				<div>
+					<div className="dropdown">
+						<button className="dropbtn">Perfil</button>
+						<div className="dropdown-content">
+							<Link to="/">Modo Aluno</Link>
+							<Link to="/admin/cursos">Modo Admin</Link>
+						</div>
+					</div>
+					<button className="header-logout" onClick={() => userInfo ? logout() : login()}>
+						{ userInfo ? 'Sair' : 'Login' }
+					</button>
+				</div>
 			</div>
 
 		</div>
