@@ -125,7 +125,12 @@ const AdminLessons = () => {
 	}
 
 	const saveVideo = (e) => {
-		if(lessonCreatedData && lessonCreatedData.id) {
+		if(!videoFile) {
+			alert("Nenhum vídeo selecionado.");
+			return;
+		}
+
+		if(lessonCreatedData && lessonCreatedData.id && videoFile) {
 			e.preventDefault();
 			lessonsApi.uploadVideo(videoFile, lessonCreatedData.id)
 				.then((resp) => {

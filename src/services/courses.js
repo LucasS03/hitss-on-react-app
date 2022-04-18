@@ -1,3 +1,4 @@
+import fileDownload from 'js-file-download';
 import api from './api';
 
 const saveCourse = async (course) => {
@@ -58,6 +59,18 @@ const getClassesByCourseId = async (id) => {
 		}
 }
 
+const getCertificate = async (courseId, userId) => {
+	try {
+		return await api.get(`/courses/${courseId}/certificate/${userId}`, { responseType: 'blob' })
+			.then(resp => {
+				fileDownload(resp.data, 'certificado.pdf')
+			})
+	} catch (error) {
+		console.error("get certificate error: ", error);
+		return error;
+	}
+}
+
 const methods = { 
     saveCourse,
     updateCourse,
@@ -65,6 +78,7 @@ const methods = {
     getCourses,
     getCourseById,
     getClassesByCourseId,
+	getCertificate
 };
 
 export default methods;

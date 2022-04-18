@@ -4,6 +4,7 @@ import "../style/lesson.css";
 import lessonsApi from "../services/lessons";
 import coursesApi from "../services/courses";
 import CardLessonCourse from "../components/cardLessonCourse";
+import VideoPlayer from "../components/VideoPlayer";
 
 const Lesson = () => {
     const navigate = useNavigate();
@@ -43,6 +44,9 @@ const Lesson = () => {
             <div className="content-lesson">
                 <div className="list-lessons">
                     {course.title}
+
+                    <VideoPlayer></VideoPlayer>
+
                 </div>
                 <div className="description-course">
                     <div className="description-course-content">

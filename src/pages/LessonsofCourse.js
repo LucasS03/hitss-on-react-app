@@ -29,7 +29,16 @@ const Lesson = () => {
         getCourseById();
     }, [navigate, params]);
 
-
+    const getCertificate = () => {
+        const userData = JSON.parse(localStorage.getItem("user"));
+        
+        coursesApi.getCertificate(params.courseId, userData.user.id)
+            .then((resp) => {
+                alert(resp.data);
+            }).catch((error) => {
+                console.error(error);
+            })
+    }
 
     return (
         <div className="container-lesson">
@@ -57,6 +66,8 @@ const Lesson = () => {
                     <div className="description-course-content">
                         <h2>Sobre o curso</h2>
                         <p>{course.description}</p>
+
+                        <button className="certificate" onClick={getCertificate}>Download Certificado</button>
                     </div>
                     <hr className="divider-section"/>
                 </div>
