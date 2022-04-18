@@ -8,7 +8,7 @@ import CardLessonCourse from "../components/cardLessonCourse";
 const Lesson = () => {
     const navigate = useNavigate();
     const params = useParams();
-    const [lessons, setLessons] = useState([]);
+    const [lesson, setLesson] = useState({});
     const [course, setCourse] = useState([]);
 
     useEffect(() => {
@@ -17,16 +17,17 @@ const Lesson = () => {
             navigate("/");
         }
 
-        const getCourseById = async () => {
-            setCourse(await coursesApi.getCourseById(params.courseId));
+        const getCourse = async () => {
+            const data = await coursesApi.getCourseById(params.courseId);
+            setCourse(data)
+        }
+        const getLesson = async () => {
+            const data = await lessonsApi.getLessonById(params.lessonId);
+            setLesson(data.data);
         }
 
-        const getLessons = async () => {
-            setLessons(await lessonsApi.getLessonsByClassId(params.courseId));
-        }
-
-        getLessons();
-        getCourseById();
+        getLesson();
+        getCourse();
     }, [navigate, params]);
 
 
@@ -37,26 +38,16 @@ const Lesson = () => {
                 <span>Voltar</span>
             </Link>
 
-            <h1>{course.title}</h1>
-            {lessons.length ? 
-                <h4>{lessons.length} aulas</h4> :
-                <h4>Sem aulas cadastradas</h4>
-            }
+            <h1>{lesson.title}</h1>
 
             <div className="content-lesson">
-                    <div className="list-lessons">
-                        {lessons.length && lessons.map((lesson) => {
-                            return (
-                                <Link to={`/curso/${params.courseId}/aula/${lesson.id}`}>
-                                    <CardLessonCourse lesson={lesson}/>
-                                </Link>
-                            );
-                        })}
-                    </div>
+                <div className="list-lessons">
+                    {course.title}
+                </div>
                 <div className="description-course">
                     <div className="description-course-content">
-                        <h2>Sobre o curso</h2>
-                        <p>{course.description}</p>
+                        <h2>Sobre a aula</h2>
+                        <p>{lesson.description}</p>
                     </div>
                     <hr className="divider-section"/>
                 </div>

@@ -6,6 +6,7 @@ import Lessons from "./pages/LessonsofCourse";
 import Header from "./components/header";
 import NotFound from "./pages/NotFound";
 import Admin from "./pages/Admin";
+import Lesson from "./pages/Lesson";
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
         <Route path="/admin/:page" element={<Admin />} />
 
         <Route path="/curso/:courseId/lessons/" element={<Lessons />} />
+        <Route path="/curso/:courseId/aula/:lessonId" element={<Lesson />} />
         
         <Route path="*" element={<NotFound />} />
       </Routes>
