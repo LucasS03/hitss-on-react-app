@@ -21,9 +21,39 @@ const getUsers = async () => {
     }
 }
 
+const saveUser = async (user) => {
+	try {
+		return api.post('/user', user);
+	} catch (error) {
+		console.error("save user error: ", error);
+		return error;
+	}
+}
+
+const updateUser = async (id, user) => {
+	try {
+		return api.put(`/user/${id}`, user);
+	} catch (error) {
+		console.error("update user error: ", error);
+		return error;
+	}
+}
+
+const deleteUserById = async (id) => {
+	try {
+		return api.delete(`/user/${id}`);
+	} catch (error) {
+		console.error("delete user error: ", error);
+		return error;
+	}
+}
+
 const methods = { 
     login,
-    getUsers
+    getUsers,
+    saveUser,
+    updateUser,
+    deleteUserById
 };
 
 export default methods;

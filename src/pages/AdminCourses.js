@@ -131,6 +131,7 @@ const AdminCourses = () => {
 				})}
 			</div>
 
+			{/* criar */}
 			{modalIsOpen ?
 				<div className='create-course-container-modal'>
 					<div className='create-course-content-modal'>
@@ -157,6 +158,7 @@ const AdminCourses = () => {
 				: <></>
 			}
 
+			{/* editar */}
 			{modalEditIsOpen ?
 				<div className='create-course-container-modal'>
 					<div className='create-course-content-modal'>
@@ -183,6 +185,7 @@ const AdminCourses = () => {
 				: <></>
 			}
 
+			{/* deletar */}
 			{modalDeleteIsOpen ?
 				<div className='create-course-container-modal'>
 					<div className='create-course-content-modal'>
