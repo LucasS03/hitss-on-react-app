@@ -15,11 +15,15 @@ const AdminLessons = () => {
 	const [modalEditIsOpen, setModalEditIsOpen] = useState(false);
 	const [modalDeleteIsOpen, setModalDeleteIsOpen] = useState(false);
 
+	const [lessonCreated, setLessonCreated] = useState(false);
+	const [lessonCreatedData, setLessonCreatedData] = useState({});
+
 	const [lesson, setLesson] = useState({});
 	const [lessonTitle, setLessonTitle] = useState('');
 	const [lessonDescription, setLessonDescription] = useState('');
 	const [lessonCourse, setLessonCourse] = useState({});
 	const [lessonNumber, setLessonNumber] = useState(0);
+	const [videoFile, setFile] = useState(null);
 
 	useEffect(() => {
 		const userData = JSON.parse(localStorage.getItem("user"));
@@ -110,12 +114,26 @@ const AdminLessons = () => {
 				"courseId": lessonCourse.id,
 				"number": parseInt(lessonNumber)
 			}).then((resp) => {
-				changeStateModal(false);
 				const newList = [...lessons, resp.data];
 				setLessons(newList);
+				setLessonCreatedData(resp.data);
+				setLessonCreated(true);
 			}).catch((error) => {
 				console.error(error);
 			})
+		}
+	}
+
+	const saveVideo = (e) => {
+		if(lessonCreatedData && lessonCreatedData.id) {
+			e.preventDefault();
+			lessonsApi.uploadVideo(videoFile, lessonCreatedData.id)
+				.then((resp) => {
+					console.log(resp);
+					changeStateModal(false);
+				}).catch((error) => {
+					console.error(error);
+				})
 		}
 	}
 
@@ -201,14 +219,14 @@ const AdminLessons = () => {
 					<div className='create-lesson-content-modal'>
 						<Modal title="Nova Aula" onCloseModal={(value) => changeStateModal(value)}>
 							<div className='modal-content'>
-								<input 
+								<input disabled={lessonCreated ? 'disabled' : ''}
 									className='input'
 									type="text"
 									placeholder="Título"
 									value={lessonTitle}
 									onChange={handleTitleChange}/>
 								
-								<textarea
+								<textarea disabled={lessonCreated ? 'disabled' : ''}
 									className='input textarea'
 									placeholder='Descrição'
 									value={lessonDescription}
@@ -219,14 +237,22 @@ const AdminLessons = () => {
 									type="text"
 									value={lessonCourse.title}/>
 
-								<input 
+								<input disabled={lessonCreated ? 'disabled' : ''}
 									className='input'
 									type="number"
 									placeholder="Número"
 									value={lessonNumber}
 									onChange={handleNumberChange}/>
+
+								{lessonCreated ?
+									<input id="file" type="file" onChange={(event) => setFile(event.target.files[0])} /> :
+									<></>
+								}
 								
-								<button className='btn-submit' onClick={createLesson}>Criar Novo Curso</button>
+								{lessonCreated ?
+									<button className='btn-submit' onClick={(e) => saveVideo(e)}>Enviar Vídeo</button> :
+									<button className='btn-submit' onClick={createLesson}>Criar Nova Aula</button>
+								}
 							</div>
 						</Modal>
 					</div>

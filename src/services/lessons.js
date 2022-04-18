@@ -47,12 +47,25 @@ const getLessonById = async (id) => {
 	}
 }
 
+const uploadVideo = async (body, lessonId) => {
+	let formData = new FormData();
+	formData.append("video", body);
+
+	try {
+		return await api.post(`/class/${lessonId}/upload`, formData)
+	} catch (error) {
+		console.log('Erro ao salvar vídeo');
+		return error;
+	}
+}
+
 const methods = { 
     saveLesson,
     updateLesson,
     deleteLessonById,
 	getLessonsByClassId,
-    getLessonById
+    getLessonById,
+	uploadVideo
 };
 
 export default methods;
