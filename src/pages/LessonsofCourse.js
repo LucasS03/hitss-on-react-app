@@ -56,7 +56,7 @@ const Lesson = () => {
                     <div className="list-lessons">
                         {lessons.length && lessons.map((lesson) => {
                             return (
-                                <Link to={`/curso/${params.courseId}/aula/${lesson.id}`}>
+                                <Link to={`/curso/${params.courseId}/aula/${lesson.id}`} key={`lesson-${lesson.id}`}>
                                     <CardLessonCourse lesson={lesson}/>
                                 </Link>
                             );

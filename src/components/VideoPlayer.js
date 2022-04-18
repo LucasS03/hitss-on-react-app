@@ -2,9 +2,9 @@ import React from "react";
 import useVideoPlayer from "../utils/hooks/useVideoPlayer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlay, faVolumeUp, faPause, faVolumeXmark } from "@fortawesome/free-solid-svg-icons";
+import '../style/videoPlayer.css'
 
 const VideoPlayer = (props) => {
-    const testeVideo = "../uploads/videos/1645063930419-epic-2022-01-25_10.54.02.mp4";
     const videoElement = React.useRef(null);
     const {
         playerState,
@@ -19,7 +19,7 @@ const VideoPlayer = (props) => {
     return (
         <div className="video-wrapper">
             <video 
-                src={testeVideo}
+                src={props.url}
                 ref={videoElement}
                 onTimeUpdate={handleOnTimeUpdate}/>
 

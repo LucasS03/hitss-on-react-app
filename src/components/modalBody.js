@@ -22,7 +22,7 @@ const ModalBody = (props) => {
         .then(function (response) {
             setLoginError(false);
             localStorage.setItem("user", JSON.stringify(response.data));
-            navigate(`/inicio/${response.data.user.id}`);
+            navigate(`/inicio`);
             props.onCloseModal(false);
         })
         .catch(function (error) {

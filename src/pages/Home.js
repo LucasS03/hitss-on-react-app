@@ -30,7 +30,7 @@ function Home() {
             <h1>Trilha Javascript</h1>
 
             {courses.length && courses.map((course) => {
-                return <CardCourseHome course={course} />
+                return <CardCourseHome course={course} key={`home-course-${course.id}`}/>
             })}
         </div>
     );

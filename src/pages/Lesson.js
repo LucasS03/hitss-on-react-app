@@ -11,6 +11,7 @@ const Lesson = () => {
     const params = useParams();
     const [lesson, setLesson] = useState({});
     const [course, setCourse] = useState([]);
+    const [video, setVideo] = useState('');
 
     useEffect(() => {
         const userData = JSON.parse(localStorage.getItem("user"));
@@ -27,8 +28,15 @@ const Lesson = () => {
             setLesson(data.data);
         }
 
+        const getLessonVideo = async () => {
+            const data = await lessonsApi.getLessonVideo(params.lessonId);
+            if(data)
+                setVideo(data.data);
+        }
+
         getLesson();
         getCourse();
+        getLessonVideo();
     }, [navigate, params]);
 
 
@@ -40,16 +48,17 @@ const Lesson = () => {
             </Link>
 
             <h1>{lesson.title}</h1>
+            <h3>{course.title}</h3>
 
             <div className="content-lesson">
-                <div className="list-lessons">
-                    {course.title}
-
-                    <VideoPlayer></VideoPlayer>
-
+                <div className="video-lesson">
+                    {video ? 
+                        <VideoPlayer url={video}></VideoPlayer> :
+                        <p>Sem vídeo cadastrado.</p>
+                    }
                 </div>
-                <div className="description-course">
-                    <div className="description-course-content">
+                <div className="description-lesson">
+                    <div className="description-lesson-content">
                         <h2>Sobre a aula</h2>
                         <p>{lesson.description}</p>
                     </div>

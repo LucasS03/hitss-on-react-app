@@ -15,11 +15,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/inicio/:id" element={<Home />} />
+        <Route path="/inicio" element={<Home />} />
 
         <Route path="/admin/:page" element={<Admin />} />
 
-        <Route path="/curso/:courseId/lessons/" element={<Lessons />} />
+        <Route path="/curso/:courseId/aulas" element={<Lessons />} />
         <Route path="/curso/:courseId/aula/:lessonId" element={<Lesson />} />
         
         <Route path="*" element={<NotFound />} />

@@ -59,13 +59,22 @@ const uploadVideo = async (body, lessonId) => {
 	}
 }
 
+const getLessonVideo = async (lessonId) => {
+	try {
+		return await api.get(`/class/${lessonId}/video`);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
 const methods = { 
     saveLesson,
     updateLesson,
     deleteLessonById,
 	getLessonsByClassId,
     getLessonById,
-	uploadVideo
+	uploadVideo,
+	getLessonVideo
 };
 
 export default methods;

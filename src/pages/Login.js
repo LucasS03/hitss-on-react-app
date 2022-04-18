@@ -10,7 +10,7 @@ function Login() {
 
 	useEffect(() => {
 		if(userInfo)
-			navigate("/inicio/1");		
+			navigate("/inicio");		
 	}, [userInfo, navigate]);
 
 	return (

@@ -18,6 +18,12 @@
     margin: 0;
 }
 
+.container-lesson h3 {
+    padding: 0 0 0 10px;
+    margin-top: 0;
+    color: #666;
+}
+
 .container-lesson h4 {
     padding: 0 10px 10px 10px;
     color: #444;
@@ -65,7 +71,8 @@
     flex-grow: 10;
     padding: 10px;
 }
-.content-lesson .description-course {
+.content-lesson .description-course,
+.content-lesson .description-lesson {
     display: flex;
     flex-direction: column;
     flex-grow: 2;
@@ -73,7 +80,8 @@
     height: min-content;
 }
 
-.content-lesson .description-course .description-course-content {
+.content-lesson .description-course .description-course-content,
+.content-lesson .description-lesson .description-lesson-content {
     border-radius: 10px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, .7);
     padding: 10px 20px;
