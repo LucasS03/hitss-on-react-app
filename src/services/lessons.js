@@ -30,9 +30,9 @@ const deleteLessonById = async (id) => {
 const getLessonsByClassId = async (courseId) => {
 	try {
 		  const resp = await api.get(`course/${courseId}/classes`);
-  
-		  return resp.data;
-	  } catch (error) {
+
+			return resp.data || [];
+		} catch (error) {
 		  console.error("get lessons error: ", error);
 		  return error;
 	  }

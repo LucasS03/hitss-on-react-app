@@ -10,6 +10,7 @@ function Sidebar(props) {
 			<ul>
 				<li onClick={() => navigate("/admin/cursos")} className={props.page === "cursos" ? "selected" : ""}>Cursos</li>
 				<li onClick={() => navigate("/admin/usuarios")} className={props.page === "usuarios" ? "selected" : ""}>Usuários</li>
+				<li onClick={() => navigate("/admin/aulas")} className={props.page === "aulas" ? "selected" : ""}>Aulas</li>
 			</ul>
 		</div>
 	);

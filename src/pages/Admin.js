@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
 import "../style/admin.css";
 import AdminCourses from './AdminCourses';
+import AdminLessons from './AdminLessons';
 import AdminUsers from './AdminUsers';
 
 const Admin = () => {
@@ -15,10 +16,9 @@ const Admin = () => {
             </div>
 
             <div className="admin-content">
-                {params.page === "cursos" ? 
-                    <AdminCourses /> :
-                    params.page === "usuarios" ?
-                    <AdminUsers /> :
+                {params.page === "cursos" ?  <AdminCourses /> :
+                    params.page === "usuarios" ? <AdminUsers /> :
+                    params.page === "aulas" ? <AdminLessons /> :
                     <h1>Não encontrado...</h1>
                 }
             </div>

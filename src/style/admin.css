@@ -22,12 +22,14 @@
 }
 
 .admin-courses,
-.admin-users {
+.admin-users,
+.admin-lessons {
     width: 100%;
 }
 
 .admin-courses-header,
-.admin-users-header {
+.admin-users-header,
+.admin-users-lessons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -35,7 +37,9 @@
 }
 
 .admin-courses .course-item,
-.admin-users .user-item {
+.admin-users .user-item,
+.admin-lessons .course-item,
+* .lesson-item {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -49,6 +53,14 @@
     padding: 5px 10px;
     border: 1px solid grey;
     border-radius: 5px;
+}
+
+.margin-0 {
+    margin: 0 !important;
+}
+
+.mb-10 {
+    margin-bottom: 10px !important;
 }
 
 .delete {
@@ -84,7 +96,8 @@
 
 /* course */
 .create-course-container-modal,
-.create-user-container-modal {
+.create-user-container-modal,
+.create-lesson-container-modal {
     display: block;
     position: fixed;
     left: 0;
@@ -94,7 +107,8 @@
     width: 100%;
 }
 .create-course-content-modal,
-.create-user-content-modal {
+.create-user-content-modal,
+.create-lesson-content-modal {
     display: flex;
     flex-direction: row;
     width: 100%;
