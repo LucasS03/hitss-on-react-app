@@ -114,7 +114,13 @@ const AdminLessons = () => {
 				"courseId": lessonCourse.id,
 				"number": parseInt(lessonNumber)
 			}).then((resp) => {
-				const newList = [...lessons, resp.data];
+				let newList = [];
+				
+				if(lessons.length)
+					newList = [...lessons, resp.data];
+				else 
+					newList = [resp.data];
+
 				setLessons(newList);
 				setLessonCreatedData(resp.data);
 				setLessonCreated(true);
